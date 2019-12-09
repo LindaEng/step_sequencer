@@ -1,8 +1,9 @@
+//Google chrome won't allow sound to play unless there is a user interaction.
 document.querySelector('button').addEventListener('click', function() {
   Tone.context.resume().then(() => {
     var synth = new Tone.Synth().toMaster();
 
-    //play a middle 'C' for the duration of an 8th note
+    
     synth.triggerAttackRelease('C4', '8n');
 
     const synths = [
@@ -22,17 +23,16 @@ document.querySelector('button').addEventListener('click', function() {
 
     synths.forEach(synth => synth.connect(gain));
 
-    const $rows = document.body.querySelectorAll('div > div'); //will select all divs that are a child of a div wrapper div > divs inside
+    const $rows = document.body.querySelectorAll('div > div'); 
     const notes =['G5','E4','C3'];
     let index = 0;
 
 
-    Tone.Transport.scheduleRepeat(repeat, '8n'); //repeat function underneath
+    Tone.Transport.scheduleRepeat(repeat, '8n'); 
 
     Tone.context.resume();
     Tone.Transport.start();
     Tone.context.resume();
-
 
 
     function repeat(time) {
@@ -54,6 +54,7 @@ document.querySelector('button').addEventListener('click', function() {
 
     console.log('Playback resumed successfully');
   });
+
 });
 
 
